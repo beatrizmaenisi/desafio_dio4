@@ -1,4 +1,4 @@
-# Desafio DIO - Construindo um projeto lógico de Banco de Dados (Ofinicina)
+# Desafio DIO - Construindo um projeto lógico de Banco de Dados (Oficina)
 
 A partir do modelo conceitual de oficina, foi realizado a criação do modelo lógico.   
 O modelo conceitual se encontra [aqui](https://github.com/beatrizmaenisi/desafio_dio2)
