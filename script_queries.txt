@@ -1,0 +1,22 @@
+-- Queries
+
+-- Mostre informações do veículo, o nome do cliente e o status da OS
+select v.placa, v.modelo, v.ano, c.nome, o.status 
+	from veiculo as v
+    join cliente as c on v.id_cliente = c.idCliente
+    join os as o on v.id_os=o.idOS;
+
+-- Mostre apenas mecânicos com especialidade em sistema elétrico
+select * from mecanico 
+	where especialidade = 'Sistema elétrico';
+
+-- Mostre o id de OS, a peça e o valor total, ordenado de forma decrescente
+select op.id_os,p.descricao,op.valor_total
+	from os_peca as op
+    join peca as p on op.id_peca=p.idPeca order by op.valor_total desc;
+    
+-- Quais especialidades tem apenas 1 mecânico?
+select especialidade,count(*) as Qtd
+	from mecanico
+    group by Especialidade
+    having qtd=1;

@@ -1,0 +1,72 @@
+-- Inserindo dados
+
+insert into peca(descricao, valor)
+	values ('Freio',55),
+           ('Bateria',1350),
+           ('Motor',8300),
+           ('Sistema de ignição',140),
+           ('Tinta',310);
+select * from peca;
+
+insert into os(data_emissao,valor,status, data_conclusao,id_equipe)
+	values('2025-03-14',66.4,'Aprovado','2025-04-02',2),
+          ('2025-01-22',34.1,'Concluído','2025-01-28',1),
+          ('2025-03-05',41,'Em andamento','2025-03-31',3),
+          ('2025-03-10',53.2,'Em andamento','2025-03-26',1);
+select * from os;
+    
+insert into mecanico (nome, endereco, especialidade)
+	values('Luis','Rua Itapeva 345, Centro - SP','Sistema elétrico'),
+          ('Marco','Rua das Graças 88,Lima - SP','Funilaria e pintura'),
+          ('Roberto','Avenida dos Ourives 64,Centro - SP','Motor'),
+          ('Robson','Rua das Laranjeiras 743,Tatuapé - SP','Sistema elétrico'),
+          ('Maycon','Rua Japão 22, Centro - SP','Mecânica geral');
+select * from mecanico;
+
+insert into servico(descricao,valor_mao_obra)
+	values('Conserto',74.6),
+          ('Revisão',120),
+          ('Conserto',95.6),
+          ('Conserto',150.7);
+select * from servico;
+
+insert into cliente(Nome, telefone)
+	values('Tatiana','11974836104'),
+          ('Mariana','11966320748'),
+          ('Wagner','11947205576'),
+          ('Luisa','11959870244');
+select * from cliente;
+
+insert into veiculo(placa,modelo,ano,id_cliente,id_os)
+	values ('AGT4J77','Celta','2019',3,5),
+           ('JJT5D99','HB20','2017',1,8),
+           ('KLO8H54','Civic','2022',2,7),
+           ('FFS2J89','Logan','2016',4,6);
+select * from veiculo;
+
+insert into equipe (qtd_membros)
+	values (4),
+           (2),
+           (3);
+select * from equipe;
+
+insert into os_peca(id_os,id_peca,valor_total)
+	values (7,1,96),
+           (6,3,8334.1),
+           (5,1,121.4),
+           (8,5,363.2);
+select * from os_peca;
+
+insert into equipe_mecanico(id_equipe,id_mecanico)
+	values(1,4),
+          (2,3),
+          (2,2),
+          (3,1);
+select * from equipe_mecanico;      
+   
+insert into servico_os (id_os,id_servico,valor_total)
+	values (6,2,154.1),
+           (5,4,217.1),
+           (8,1,127.6),
+           (7,3,136.6);
+select * from servico_os;

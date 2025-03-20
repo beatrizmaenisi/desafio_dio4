@@ -1,0 +1,90 @@
+-- Criação do banco
+create database oficina;
+use oficina;
+
+-- Peça
+create table peca(
+idPeca int auto_increment primary key,
+descricao varchar(45),
+valor float
+);
+
+-- OS
+create table os(
+idOS int auto_increment primary key,
+data_emissao date not null,
+valor float,
+status enum('Cancelado','Aprovado','Em andamento','Concluído') default 'Aprovado',
+data_conclusao date not null,
+id_equipe int,
+constraint fk_id_equipe foreign key (id_equipe) references equipe(idequipe)
+);
+
+-- Mecânico
+create table mecanico(
+idMecanico int auto_increment primary key,
+Nome varchar(50) not null,
+Endereco varchar(100) not null,
+Especialidade enum('Mecânica geral','Sistema elétrico','Funilaria e pintura','Motor')
+);
+
+-- Serviço
+create table servico(
+idServico int auto_increment primary key,
+Descricao varchar(100),
+Valor_mao_obra float not null
+);
+
+-- Cliente
+create table cliente(
+idCliente int auto_increment primary key,
+Nome varchar(50) not null,
+Telefone char(11) not null,
+Endereco varchar(100)
+);
+
+-- Veículo
+create table veiculo(
+idVeiculo int auto_increment primary key,
+Placa char(7) not null, 
+Modelo varchar(20) not  null,
+Ano char(4),
+id_cliente int,
+id_os int,
+constraint fk_id_cliente foreign key (id_cliente) references cliente(idcliente),
+constraint fk_id_os foreign key (id_os) references os(idos)
+);
+
+-- Equipe
+create table equipe(
+idEquipe int auto_increment primary key,
+Qtd_membros int default 3
+);
+
+-- OS/Peça
+create table os_peca(
+id_os int,
+id_peca int,
+valor_total float not null,
+primary key (id_os, id_peca),
+foreign key (id_os) references os(idos),
+foreign key (id_peca) references peca(idpeca)
+);
+
+-- Equipe/Mecânico
+create table equipe_mecanico(
+id_equipe int,
+id_mecanico int,
+Descricao varchar(20),
+foreign key (id_equipe) references equipe(idequipe),
+foreign key (id_mecanico) references mecanico(idmecanico)
+);
+
+-- Serviço/OS
+create table servico_os(
+id_os int,
+id_servico int,
+valor_total float not null,
+foreign key (id_os) references os(idos),
+foreign key (id_servico) references servico(idservico)
+);
